@@ -18,6 +18,7 @@
 #
 
 from dnf.cli import commands
+from dnf.cli.demand import CleanCommandLock
 from dnf.i18n import _, ucd
 
 import dnf.util
@@ -38,6 +39,7 @@ class ShellDemandSheet(object):
     resolving = True
     root_user = True
     sack_activation = True
+    clean_command_lock = CleanCommandLock.READ
 
 
 class ShellCommand(commands.Command, cmd.Cmd):

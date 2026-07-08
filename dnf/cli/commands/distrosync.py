@@ -19,6 +19,7 @@
 
 from __future__ import absolute_import
 from dnf.cli import commands
+from dnf.cli.demand import CleanCommandLock
 from dnf.i18n import _
 
 
@@ -40,6 +41,7 @@ class DistroSyncCommand(commands.Command):
         demands.available_repos = True
         demands.resolving = True
         demands.root_user = True
+        demands.clean_command_lock = CleanCommandLock.READ
         commands._checkGPGKey(self.base, self.cli)
         commands._checkEnabledRepo(self.base, self.opts.package)
 

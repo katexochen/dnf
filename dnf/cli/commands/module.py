@@ -19,6 +19,7 @@
 from __future__ import print_function
 
 from dnf.cli import commands, CliError
+from dnf.cli.demand import CleanCommandLock
 from dnf.i18n import _
 from dnf.module.exceptions import NoModuleException
 from dnf.util import logger
@@ -209,6 +210,7 @@ class ModuleCommand(commands.Command):
             demands.sack_activation = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_module(self):
             try:
@@ -230,6 +232,7 @@ class ModuleCommand(commands.Command):
             demands.sack_activation = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_module(self):
             module_specs = self.module_base.upgrade(self.opts.module_spec)
@@ -284,6 +287,7 @@ class ModuleCommand(commands.Command):
             demands.sack_activation = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
             self.base.conf.module_stream_switch = True
 
         def run_on_module(self):

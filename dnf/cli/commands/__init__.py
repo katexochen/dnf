@@ -23,6 +23,7 @@ Classes for subcommands of the yum command line interface.
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from dnf.cli.demand import CleanCommandLock
 from dnf.cli.option_parser import OptionParser
 from dnf.i18n import _
 
@@ -342,6 +343,7 @@ class RepoPkgsCommand(Command):
             demands.sack_activation = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_repo(self):
             self.cli._populate_update_security_filter(self.opts)
@@ -394,6 +396,7 @@ class RepoPkgsCommand(Command):
             demands.available_repos = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_repo(self):
             """Execute the command with respect to given arguments *cli_args*."""
@@ -449,6 +452,7 @@ class RepoPkgsCommand(Command):
             demands.available_repos = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_repo(self):
             """Execute the command with respect to given arguments *cli_args*."""
@@ -537,6 +541,7 @@ class RepoPkgsCommand(Command):
             demands.sack_activation = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def _replace(self, pkg_spec, reponame):
             """Synchronize a package with another repository or remove it."""
@@ -599,6 +604,7 @@ class RepoPkgsCommand(Command):
             demands.available_repos = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_repo(self):
             """Execute the command with respect to given arguments *cli_args*."""
@@ -688,6 +694,7 @@ class RepoPkgsCommand(Command):
             demands.available_repos = True
             demands.resolving = True
             demands.root_user = True
+            demands.clean_command_lock = CleanCommandLock.READ
 
         def run_on_repo(self):
             """Execute the command with respect to given arguments *cli_args*."""
